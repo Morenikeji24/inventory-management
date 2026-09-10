@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit-Form</title>
+  </head>
+  <body>
+    <% if (errors && errors.length > 0) { %>
+  <ul>
+    <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+    <form action="/<%= item.id %>/edit" method="post">
+      <input type="text" id="name" name="name" value="<%= item.name %>" required/>
+      <input
+        type="text"
+        id="description"
+        name="description"
+        value="<%= item.description %>"
+        required
+      />
+      <input type="number" id="price" name="price" value="<%= item.price %>" min="0"/>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        value="<%= item.quantity %>"
+        min="0"
+      />
+      <select name="category_id" id="category">
+        <% categories.forEach(category => { %>
+
+    <option
+      value="<%= category.id %>"
+      <%= category.id === item.category_id ? "selected" : "" %>
+    >
+      <%= category.name %>
+    </option>
+
+  <% }) %>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+.item-row a {
+  width: 150px;
+  font-weight: bold;
+}
+
+.item-row span {
+  width: 250px;
+}
