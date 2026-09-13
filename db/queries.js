@@ -48,6 +48,30 @@ const db = {
       [id],
     );
   },
+
+  async searchItems(search, category_id) {
+    let query = ` SELECT * FROM items WHERE 1 = 1`;
+
+    const values = [];
+    let count = 1;
+
+    if (search) {
+      query += ` AND name ILIKE $${count}`;
+      values.push(`%${search}%`);
+      count++;
+    }
+
+    if (category_id) {
+      query += ` AND category_id = $${count}`;
+      values.push(category_id);
+    }
+
+    query += ` ORDER BY name`;
+
+    const { rows } = await pool.query(query, values);
+
+    return rows;
+  },
 };
 
 export default db;

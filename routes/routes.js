@@ -1,10 +1,11 @@
 import { Router } from "express";
 import controller from "../controllers/controller.js";
 import validateForm from "../middlewares/formValidator.js";
+import filterItems from "../middlewares/filterItems.js";
 
 export const itemRouter = Router();
 
-itemRouter.get("/", controller.getAllItems);
+itemRouter.get("/", filterItems, controller.getAllItems);
 itemRouter.get("/create", controller.getCreateForm);
 itemRouter.post("/create", validateForm, controller.postCreateForm);
 

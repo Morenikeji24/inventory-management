@@ -8,6 +8,24 @@
 </head>
 <body>
     <h1>Inventory</h1>
+    <div>
+        <form action="/" method="get">
+            <input type="text" name="search" placeholder="Search Items">
+            
+            <select name="category_id" id="categories">
+                <% categories.forEach(category => { %>
+
+    <option
+      value="<%= category.id %>">
+      <%= category.name %>
+    </option>
+
+  <% }) %>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <form action="/create" method="get">
         <button type="submit">Add new item</button>
     </form>

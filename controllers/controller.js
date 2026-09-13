@@ -4,8 +4,7 @@ import validateForm from "../middlewares/formValidator.js";
 
 const controller = {
   async getAllItems(req, res) {
-    const items = await db.getAllItems();
-    res.render("index", { items: items });
+    res.render("index", { items: req.items, categories: req.categories });
   },
 
   async getItemByID(req, res) {
